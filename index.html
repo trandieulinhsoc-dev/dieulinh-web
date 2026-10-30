@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trần Thị Diệu Linh - Portfolio</title>
+    <!-- Nhập phông chữ Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* CSS CẤU HÌNH GIAO DIỆN */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth; /* Tạo hiệu ứng cuộn mượt khi bấm menu */
+            font-family: 'Roboto', sans-serif;
+            background-color: #fcfcfc;
+            color: #333;
+        }
+
+        body {
+            line-height: 1.6;
+        }
+
+        /* 1. THANH MENU ĐIỀU HƯỚNG CỐ ĐỊNH */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: #f2f2f2;
+            padding: 20px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 700;
+            font-size: 14px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #0073aa;
+        }
+
+        /* KHUNG CHỨA NỘI DUNG CHÍNH */
+        main {
+            max-width: 1100px;
+            margin: 100px auto 40px auto;
+            padding: 0 20px;
+        }
+
+        section {
+            padding: 60px 0;
+            border-bottom: 1px solid #eee;
+        }
+
+        /* 2. SECTION 1: HOME (XIN CHÀO, TÔI LÀ LINH) */
+        #home {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 40px;
+            min-height: 80vh;
+        }
+
+        .home-text {
+            flex: 1;
+        }
+
+        .home-text h2 {
+            font-size: 28px;
+            font-weight: 500;
+            color: #444;
+            margin-bottom: 5px;
+        }
+
+        .home-text h1 {
+            font-size: 42px;
+            font-weight: 700;
+            color: #111;
+            margin-bottom: 25px;
+        }
+
+        .home-text p {
+            color: #555;
+            font-size: 15px;
+            text-align: justify;
+        }
+
+        .home-image {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+        }
+
+        .home-image img {
+            width: 320px;
+            height: auto;
+            border-radius: 4px;
+            box-shadow: 12px 12px 0px #111;
+            object-fit: cover;
+        }
+
+        /* 3. SECTION 2: ABOUT ME (KỸ NĂNG) */
+        #about-me h2.section-title {
+            font-size: 32px;
+            margin-bottom: 30px;
+        }
+
+        .skills-container {
+            display: flex;
+            gap: 50px;
+        }
+
+        .skills-desc {
+            flex: 1;
+            font-size: 15px;
+            color: #444;
+        }
+
+        .skills-bars {
+            flex: 1;
+        }
+
+        .skill-item {
+            margin-bottom: 20px;
+        }
+
+        .skill-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+            font-weight: 600;
+            font-size: 13px;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 10px;
+            background-color: #e0e0e0;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .progress {
+            height: 100%;
+            background-color: #111;
+            border-radius: 5px;
+        }
+
+        /* 4. SECTION 3: PROJECT (DỰ ÁN & THÀNH TỰU) */
+        #project h2.section-title {
+            font-size: 32px;
+            margin-bottom: 5px;
+        }
+
+        .project-subtitle {
+            font-size: 15px;
+            color: #666;
+            margin-bottom: 25px;
+            font-weight: 500;
+        }
+
+        /* Nhóm dự án thứ nhất */
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .project-card {
+            background-color: #fff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .project-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .project-card-full {
+            grid-column: span 3;
+        }
+
+        .project-card-full img {
+            height: 240px;
+            object-fit: cover;
+        }
+
+        /* Nhóm dự án thứ hai (Chia 2 cột cân đối) */
+        .project-grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .project-card-half img {
+            width: 100%;
+            height: 320px;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* 5. SECTION 4: CONTACT US (LIÊN HỆ) */
+        #contact {
+            background-color: #eef5f9;
+            padding: 40px;
+            border-radius: 12px;
+            margin-top: 40px;
+        }
+
+        #contact h2 {
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+
+        .contact-list {
+            list-style: none;
+        }
+
+        .contact-list li {
+            margin-bottom: 12px;
+            font-size: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* Tạo kiểu đường dẫn cho phần liên hệ */
+        .contact-list a {
+            color: #0073aa;
+            text-decoration: none;
+            transition: color 0.2s, text-decoration 0.2s;
+        }
+
+        .contact-list a:hover {
+            color: #005177;
+            text-decoration: underline;
+        }
+
+        /* FOOTER */
+        footer {
+            text-align: center;
+            padding: 30px 0;
+            font-size: 13px;
+            color: #777;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- THANH MENU ĐIỀU HƯỚNG -->
+    <header>
+        <nav>
+            <a href="#home">HOME</a>
+            <a href="#about-me">ABOUT ME</a>
+            <a href="#project">PROJECT</a>
+            <a href="#contact">CONTACT US</a>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Trang 1: HOME -->
+        <section id="home">
+            <div class="home-text">
+                <h2>Xin chào</h2>
+                <h1>Tôi là Linh</h1>
+                <p>
+                    Xin chào! Tên tôi là <strong>Diệu Linh</strong>. 
+                    Hiện đang là <strong>sinh viên năm 3 ngành Thương mại điện tử tại Trường Đại học Công nghệ Giao thông Vận tải (UTT)</strong>, 
+                    tôi đã và đang trang bị cho mình nền tảng kiến thức về kinh doanh trực tuyến, marketing số và ứng dụng công nghệ trong hoạt động thương mại. 
+                    Tôi có tinh thần ham học hỏi, yêu thích sự sáng tạo và luôn chủ động tìm kiếm giải pháp cho các vấn đề thực tế. 
+                    Tôi luôn sẵn sàng <strong>học hỏi, tích lũy kinh nghiệm và đón nhận</strong> những thử thách mới để từng bước phát triển bản thân trong lĩnh vực <strong>Thương mại điện tử</strong>.
+                </p>
+            </div>
+            <div class="home-image">
+                <img src="prf.png" alt="Chân dung Diệu Linh">
+            </div>
+        </section>
+
+        <!-- Trang 2: ABOUT ME (Kỹ năng) -->
+        <section id="about-me">
+            <h2 class="section-title">Kỹ năng</h2>
+            <div class="skills-container">
+                <div class="skills-desc">
+                    <p>
+                        Là sinh viên năm 3 ngành Thương mại điện tử tại Trường Đại học Công nghệ Giao thông Vận tải (UTT), 
+                        tôi đã và đang trang bị kiến thức về kinh doanh trực tuyến, marketing số và ứng dụng công nghệ trong thương mại điện tử. 
+                        Với tinh thần ham học hỏi, sáng tạo và khả năng thích nghi tốt, tôi mong muốn tìm kiếm cơ hội làm việc trong môi trường chuyên nghiệp 
+                        để áp dụng kiến thức đã học, tích lũy kinh nghiệm và đóng góp vào sự phát triển lâu dài của doanh nghiệp.
+                    </p>
+                </div>
+                <div class="skills-bars">
+                    <div class="skill-item">
+                        <div class="skill-info"><span>Leader</span><span>70%</span></div>
+                        <div class="progress-bar"><div class="progress" style="width: 70%;"></div></div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-info"><span>Teamwork/Presentation</span><span>75%</span></div>
+                        <div class="progress-bar"><div class="progress" style="width: 75%;"></div></div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-info"><span>SQL Server</span><span>50%</span></div>
+                        <div class="progress-bar"><div class="progress" style="width: 50%;"></div></div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-info"><span>English</span><span>80%</span></div>
+                        <div class="progress-bar"><div class="progress" style="width: 80%;"></div></div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-info"><span>Chinese</span><span>30%</span></div>
+                        <div class="progress-bar"><div class="progress" style="width: 30%;"></div></div>
+                    </div>
+                    <div class="skill-item">
+                        <div class="skill-info"><span>Microsoft Office Specialist</span><span>90%</span></div>
+                        <div class="progress-bar"><div class="progress" style="width: 90%;"></div></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Trang 3: PROJECT (Dự án & Thành tựu) -->
+        <section id="project">
+            <h2 class="section-title">Dự án & Thành tựu</h2>
+            
+            <!-- Phần Dự án 1 -->
+            <p class="project-subtitle" style="margin-top: 15px;">Top 9 Quốc gia Cuộc thi Sinh viên Kinh doanh số 2025 (Digital Business Contest)</p>
+            <div class="project-grid">
+                <div class="project-card project-card-full">
+                    <img src="Khacchatphong.jpg" alt="Banner Khắc chất phong cách - Dựng bản sắc">
+                </div>
+                <div class="project-card">
+                    <img src="Nhomdbc.jpg" alt="Hoạt động nhóm 1">
+                </div>
+                <div class="project-card">
+                    <img src="nguhotuong.jpg" alt="Logo Ngũ Hổ Tường">
+                </div>
+                <div class="project-card">
+                    <img src="ebook.jpg" alt="Laptop Ebook">
+                </div>
+            </div>
+
+            <!-- Phần Dự án 2 -->
+            <p class="project-subtitle" style="margin-top: 40px;">Quý Quân Cuộc thi E-Break 2025 – Tháp sáng tài năng số</p>
+            <div class="project-grid-2">
+                <div class="project-card project-card-half">
+                    <img src="ngutinh.jpg" alt="Quý Quân Ngũ Tinh Tấn Số">
+                </div>
+                <div class="project-card project-card-half">
+                    <img src="thuyettrinh.jpg" alt="Thuyết trình dự án trên sân khấu">
+                </div>
+            </div>
+        </section>
+
+        <!-- Trang 4: CONTACT US (Liên hệ) -->
+        <section id="contact">
+            <h2>Liên hệ</h2>
+            <ul class="contact-list">
+                <li>✉️ <strong>Email:</strong> <a href="mailto:trandieulinh.soc@gmail.com">trandieulinh.soc@gmail.com</a></li>
+                <li>📞 <strong>Số điện thoại:</strong> <a href="tel:0362670847">0362670847</a></li>
+                <li>👤 <strong>Facebook:</strong> <a href="https://www.facebook.com/share/1dMVedcEpp/?mibextid=wwXIfr" target="_blank">Diệu Linh</a></li>
+                <li>📷 <strong>Instagram:</strong> <a href="https://www.instagram.com/knyld._.310?cplk=MWQ3bmlrYmtpemUyeA%3D%3D&utm_source=qr" target="_blank">kinyld_310</a></li>
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <p>Copyright &copy; 2026 | Designed for Diệu Linh Portfolio</p>
+    </footer>
+
+</body>
+</html>
